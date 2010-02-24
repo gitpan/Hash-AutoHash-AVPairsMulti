@@ -1,6 +1,6 @@
 ---
 name: Hash-AutoHash-AVPairsMulti
-version: 1.10
+version: 1.11
 author:
   - 'Nat Goodman <natg@shore.net>'
 abstract: Object-oriented access to hash with multi-valued simple (non-reference) elements
@@ -20,12 +20,12 @@ configure_requires:
 provides:
   Hash::AutoHash::AVPairsMulti:
     file: lib/Hash/AutoHash/AVPairsMulti.pm
-    version: 1.10
+    version: 1.11
   Hash::AutoHash::AVPairsMulti::helper:
     file: lib/Hash/AutoHash/AVPairsMulti.pm
   Hash::AutoHash::AVPairsMulti::tie:
     file: lib/Hash/AutoHash/AVPairsMulti.pm
-    version: 1.10
+    version: 1.11
 generated_by: Module::Build version 0.34
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html

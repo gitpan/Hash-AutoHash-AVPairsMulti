@@ -1,5 +1,5 @@
 package Hash::AutoHash::AVPairsMulti;
-our $VERSION='1.10';
+our $VERSION='1.11';
 #################################################################################
 #
 # Author:  Nat Goodman
@@ -43,7 +43,7 @@ sub _new {
 # Tied hash which implements Hash::AutoHash::AVPairsMulti
 #################################################################################
 package Hash::AutoHash::AVPairsMulti::tie;
-our $VERSION='1.10';
+our $VERSION='1.11';
 use strict;
 use Carp;
 use Hash::AutoHash::MultiValued;
@@ -71,7 +71,7 @@ Hash::AutoHash::AVPairsMulti -  Object-oriented access to hash with multi-valued
 
 =head1 VERSION
 
-Version 1.10
+Version 1.11
 
 =head1 SYNOPSIS
 
@@ -216,9 +216,7 @@ You can do the same thing more concisely with this cryptic one-liner.
 
 Filtering occurs when you run the 'filter' method. It does not occur on every update.
 
-=head2 Functions and methods
-
-The constructor is 'new'.
+=head2 new
 
  Title   : new 
  Usage   : $avp=new Hash::AutoHash::AVPairsMulti
@@ -236,7 +234,9 @@ The constructor is 'new'.
  Notes   : Be aware when passing args as HASH that Perl does NOT preserve
            duplicate keys.
 
-The next two methods must be invoked on the B<tied object implementing the hash>.
+=head2 unique
+
+This  method must be invoked on the B<tied object implementing the hash>.
 
  Title   : unique 
  Usage   : $unique=tied(%$avp)->unique
@@ -271,6 +271,10 @@ The next two methods must be invoked on the B<tied object implementing the hash>
            through the duplicate-removal process. Thereafter, duplicate checking
            occurs on every update.
 
+=head2 filter
+
+This  method must be invoked on the B<tied object implementing the hash>.
+
  Title   : filter 
  Usage   : $filter=tied(%$avp)->filter
            -- OR --
@@ -304,6 +308,8 @@ Function: Set function used for filtering and perform filtering if true.
            filtering occurs immediately by running all existing elements through
            the filter function.
 
+=head2 Functions inherited from Hash::AutoHash
+
 The following functions are inherited from L<Hash::AutoHash> and
 operate exactly as there. You must import them into your namespace
 before use.
@@ -313,6 +319,8 @@ before use.
        autohash_clear autohash_delete autohash_each autohash_exists 
        autohash_keys autohash_values 
        autohash_count autohash_empty autohash_notempty)
+
+=head3 autohash_alias
 
 Aliasing a Hash::AutoHash object to a regular hash avoids the need to
 dereference the variable when using hash notation.  As a convenience,
@@ -324,6 +332,8 @@ on whether the given object exists.
  Function: Link $avp to %hash such that they will have exactly the same value.
  Args    : Hash::AutoHash::AVPairsMulti object and hash 
  Returns : Hash::AutoHash::AVPairsMulti object
+
+=head3 autohash_tied
 
 You can access the object implementing the tied hash using Perl's
 built-in tied function or the autohash_tied function inherited from
@@ -356,13 +366,15 @@ invoking methods on the tied object.
            Form 4. hash to which Hash::AutoHash::AVPairsMulti object is aliased, 
              method name, optional list of parameters for method
 
-The next two functions provide wholesale manipulation of arguments.
+=head3 autohash_get
 
  Title   : autohash_get
  Usage   : ($pets,$hobbies)=autohash_get($avp,qw(pets hobbies))
  Function: Get values for multiple keys.
  Args    : Hash::AutoHash::AVPairsMulti object and list of keys
  Returns : list of argument values
+
+=head3 autohash_set
 
  Title   : autohash_set
  Usage   : autohash_set($avp,pets=>'Felix',kids=>'Joe')
@@ -374,9 +386,13 @@ The next two functions provide wholesale manipulation of arguments.
            values
  Returns : Hash::AutoHash::AVPairsMulti object
 
+=head3 Functions for hash-like operations
+
 The remaining functions provide hash-like operations on
 Hash::AutoHash::AVPairsMulti objects. These are useful if you want to
 avoid hash notation all together.
+
+=head4 autohash_clear
 
  Title   : autohash_clear
  Usage   : autohash_clear($avp)
@@ -384,17 +400,23 @@ avoid hash notation all together.
  Args    : Hash::AutoHash::AVPairsMulti object
  Returns : nothing
 
+=head4 autohash_delete
+
  Title   : autohash_delete
  Usage   : autohash_delete($avp,@keys)
  Function: Delete keys and their values from $avp.
  Args    : Hash::AutoHash::AVPairsMulti object, list of keys
  Returns : nothing
 
+=head4 autohash_exists
+
  Title   : autohash_exists
  Usage   : if (autohash_exists($avp,$key)) { ... }
  Function: Test whether key is present in $avp.
  Args    : Hash::AutoHash::AVPairsMulti object, key
  Returns : boolean
+
+=head4 autohash_each
 
  Title   : autohash_each
  Usage   : while (my($key,$value)=autohash_each($avp)) { ... }
@@ -405,11 +427,15 @@ avoid hash notation all together.
  Returns : list context: next key=>value pair in $avp or empty list at end
            scalar context: next key in $avp or undef at end
 
+=head4 autohash_keys
+
  Title   : autohash_keys
  Usage   : @keys=autohash_keys($avp)
  Function: Get all keys that are present in $avp
  Args    : Hash::AutoHash::AVPairsMulti object
  Returns : list of keys
+
+=head4 autohash_values
 
  Title   : autohash_values
  Usage   : @values=autohash_values($avp)
@@ -417,17 +443,23 @@ avoid hash notation all together.
  Args    : Hash::AutoHash::AVPairsMulti object
  Returns : list of values
 
+=head4 autohash_count
+
  Title   : autohash_count
  Usage   : $count=autohash_count($avp)
  Function: Get the number keys that are present in $avp
  Args    : Hash::AutoHash::AVPairsMulti object
  Returns : number
 
+=head4 autohash_empty
+
  Title   : autohash_empty
  Usage   : if (autohash_empty($avp)) { ... }
  Function: Test whether $avp is empty
  Args    : Hash::AutoHash::AVPairsMulti object
  Returns : boolean
+
+=head4 autohash_notempty
 
  Title   : autohash_notempty
  Usage   : if (autohash_notempty($avp)) { ... }
