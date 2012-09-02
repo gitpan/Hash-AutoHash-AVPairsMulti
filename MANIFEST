@@ -3,6 +3,7 @@ Changes
 lib/Hash/AutoHash/AVPairsMulti.pm
 Makefile.PL
 MANIFEST
+META.json
 META.yml
 README
 t/autohashUtil.pm
@@ -12,6 +13,7 @@ t/avp_multi.002.pod.t
 t/avp_multi.010.basics.t
 t/avp_multi.020.class_methods.t
 t/avp_multi.020.special_keys.t
+t/avp_multi.020.universal.t
 t/avp_multi.030.functions.t
 t/avp_multi.031.alias.t
 t/avp_multi.031.tied.t

@@ -1,5 +1,7 @@
 package Hash::AutoHash::AVPairsMulti;
-our $VERSION='1.11';
+our $VERSION='1.12';
+$VERSION=eval $VERSION;		# I think this is the accepted idiom..
+
 #################################################################################
 #
 # Author:  Nat Goodman
@@ -43,7 +45,7 @@ sub _new {
 # Tied hash which implements Hash::AutoHash::AVPairsMulti
 #################################################################################
 package Hash::AutoHash::AVPairsMulti::tie;
-our $VERSION='1.11';
+our $VERSION=$Hash::AutoHash::AVPairsMulti::VERSION;
 use strict;
 use Carp;
 use Hash::AutoHash::MultiValued;
@@ -71,7 +73,7 @@ Hash::AutoHash::AVPairsMulti -  Object-oriented access to hash with multi-valued
 
 =head1 VERSION
 
-Version 1.11
+Version 1.12
 
 =head1 SYNOPSIS
 
@@ -155,6 +157,14 @@ individual objects), functions that must be imported into the caller's
 namespace, and methods invoked on the tied object implementing the
 hash.
 
+CAUTION: As of version 1.12, it is not possible to use method
+notation for keys with the same names as methods inherited from
+UNIVERSAL (the base class of everything). These are 'can', 'isa',
+'DOES', and 'VERSION'.  The reason is that as of Perl 5.9.3, calling
+UNIVERSAL methods as functions is deprecated and developers are
+encouraged to use method form instead. Previous versions of AutoHash
+are incompatible with CPAN modules that adopt this style.
+
 =head2 Duplicate elimination and filtering
 
 By default, hash elements may contain duplicate values.
@@ -236,7 +246,7 @@ Filtering occurs when you run the 'filter' method. It does not occur on every up
 
 =head2 unique
 
-This  method must be invoked on the B<tied object implementing the hash>.
+This method must be invoked on the B<tied object implementing the hash>.
 
  Title   : unique 
  Usage   : $unique=tied(%$avp)->unique
@@ -273,7 +283,7 @@ This  method must be invoked on the B<tied object implementing the hash>.
 
 =head2 filter
 
-This  method must be invoked on the B<tied object implementing the hash>.
+This method must be invoked on the B<tied object implementing the hash>.
 
  Title   : filter 
  Usage   : $filter=tied(%$avp)->filter
