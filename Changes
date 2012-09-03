@@ -1,12 +1,16 @@
 Revision history for Hash-AutoHash-AVPairsMulti
 
-1.12	2012-09-03
+1.13	2012-09-02
+	Fixed problem with version numbers in helper and tie packages causing
+	  PAUSE upload to fail
+
+1.12	2012-09-02
 	INCOMPATIBLE CHANGE: no longer possible to use method notation for keys
 	  with the same names as methods inherited from UNIVERSAL (the base  
 	  class of everything). These are  'can', 'isa', 'DOES', and 'VERSION'.
 	  The reason is that as of Perl 5.9.3, calling UNIVERSAL methods as
 	  functions is deprecated and developers are encouraged to use method
-	  form instead. Previous versions of AutoHash are incompatible with CPAN
+	  form instead. Previous versions of module are incompatible with CPAN
 	  modules that adopt this style.
 	Added test for version number in POD
 	Changes to Build.PL
