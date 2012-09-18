@@ -1,5 +1,5 @@
 package Hash::AutoHash::AVPairsMulti;
-our $VERSION='1.13';
+our $VERSION='1.14';
 $VERSION=eval $VERSION;		# I think this is the accepted idiom..
 
 #################################################################################
@@ -28,7 +28,7 @@ our @SUBCLASS_EXPORT_OK=$helper_class->SUBCLASS_EXPORT_OK;
 # functions herein (except _new) are exportable by Hash::AutoHash::Args
 #################################################################################
 package Hash::AutoHash::AVPairsMulti::helper;
-our $VERSION=1.13;
+our $VERSION=$Hash::AutoHash::AVPairsMulti::VERSION;
 use strict;
 use Carp;
 BEGIN {
@@ -46,7 +46,7 @@ sub _new {
 # Tied hash which implements Hash::AutoHash::AVPairsMulti
 #################################################################################
 package Hash::AutoHash::AVPairsMulti::tie;
-our $VERSION=1.13;
+our $VERSION=$Hash::AutoHash::AVPairsMulti::VERSION;
 use strict;
 use Carp;
 use Hash::AutoHash::MultiValued;
@@ -74,7 +74,7 @@ Hash::AutoHash::AVPairsMulti -  Object-oriented access to hash with multi-valued
 
 =head1 VERSION
 
-Version 1.13
+Version 1.14
 
 =head1 SYNOPSIS
 

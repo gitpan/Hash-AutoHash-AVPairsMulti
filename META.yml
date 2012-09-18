@@ -18,17 +18,17 @@ name: Hash-AutoHash-AVPairsMulti
 provides:
   Hash::AutoHash::AVPairsMulti:
     file: lib/Hash/AutoHash/AVPairsMulti.pm
-    version: 1.13
+    version: 1.14
   Hash::AutoHash::AVPairsMulti::helper:
     file: lib/Hash/AutoHash/AVPairsMulti.pm
-    version: 1.13
+    version: 0
   Hash::AutoHash::AVPairsMulti::tie:
     file: lib/Hash/AutoHash/AVPairsMulti.pm
-    version: 1.13
+    version: 0
 requires:
   Carp: 0
-  Hash::AutoHash: 1.1
-  Hash::AutoHash::MultiValued: 1.1
+  Hash::AutoHash: 1.15
+  Hash::AutoHash::MultiValued: 1.14
 resources:
   license: http://dev.perl.org/licenses/
-version: 1.13
+version: 1.14
