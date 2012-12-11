@@ -6,7 +6,6 @@ build_requires:
   Exporter: 0
   Test::Deep: 0
   Test::More: 0.88
-  perl: v5.17.6
 configure_requires:
   Module::Build: 0.4
 dynamic_config: 1
@@ -19,7 +18,7 @@ name: Hash-AutoHash-AVPairsMulti
 provides:
   Hash::AutoHash::AVPairsMulti:
     file: lib/Hash/AutoHash/AVPairsMulti.pm
-    version: 1.16_01
+    version: 1.16
   Hash::AutoHash::AVPairsMulti::helper:
     file: lib/Hash/AutoHash/AVPairsMulti.pm
     version: 0
@@ -28,8 +27,8 @@ provides:
     version: 0
 requires:
   Carp: 0
-  Hash::AutoHash: 1.15
-  Hash::AutoHash::MultiValued: 1.14
+  Hash::AutoHash: 1.16
+  Hash::AutoHash::MultiValued: 1.16
 resources:
   license: http://dev.perl.org/licenses/
-version: 1.16_01
+version: 1.16

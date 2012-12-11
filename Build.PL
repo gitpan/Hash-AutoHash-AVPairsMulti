@@ -21,11 +21,10 @@ my $builder = $class->new
    build_requires =>   {'Test::More' => 0.88,
 			'Test::Deep' => 0,
 			'Exporter' => 0,
-			perl => '5.17.6', # temporarily to smoke out hash randomization bugs...
 		       },
    requires =>         {'Carp' => 0,
-			'Hash::AutoHash' => 1.15,
-			'Hash::AutoHash::MultiValued' => 1.14,
+			'Hash::AutoHash' => 1.16,
+			'Hash::AutoHash::MultiValued' => 1.16,
 		       },
    add_to_cleanup      => [ 'Hash-AutoHash-AVPairsMulti-*' ],
    create_makefile_pl => 'small',
